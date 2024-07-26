@@ -70,7 +70,7 @@ h6 {
 /* Make images easier to work with */
 img,
 picture {
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 	display: block;
 	font-style: italic;

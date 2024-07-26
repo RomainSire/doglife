@@ -26,10 +26,26 @@
 	--5xl: calc(var(--3xl) + var(--4xl)); /* 288px */
 	--6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
 }
+
+@media screen and (max-width: 900px) {
+	/* decrease font size for small screens: --md: 14px */
+	:root {
+		--xs: 5.35px;
+		--sm: 8.65px;
+	}
+}
+
+html {
+	scroll-behavior: smooth;
+	font-size: var(--md);
+	letter-spacing: 0.01em;
+}
+
 body {
 	font-family: var(--font-base);
 	font-weight: 500;
 	background: linear-gradient(var(--color-bg-gradient-1), var(--color-bg-gradient-2));
+	color: var(--color-base);
 }
 
 h1,
@@ -40,9 +56,24 @@ h5,
 h6 {
 	font-family: var(--font-heading);
 	font-weight: 400;
+	letter-spacing: 0.02em;
 }
 
 strong,
 .bold {
 	font-weight: 700;
+}
+
+.container {
+	width: 100%;
+	max-width: 90rem;
+	margin-inline: auto;
+	padding-inline: var(--md);
+}
+
+a {
+	transition: color 0.2s;
+}
+a:hover {
+	color: var(--color-accent);
 }
