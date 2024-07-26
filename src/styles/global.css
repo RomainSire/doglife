@@ -1,0 +1,48 @@
+@import url("_reset.css");
+@import url("_fonts.css");
+
+:root {
+	/* Colors */
+	--color-base: hsl(206, 66%, 17%);
+	--color-base-secondary: hsl(206, 13%, 50%);
+	--color-neutral: hsl(206, 100%, 98%);
+	--color-accent: hsl(5, 48%, 52%);
+	--color-bg-gradient-1: hsl(4, 100%, 97%);
+	--color-bg-gradient-2: hsl(207, 100%, 95%);
+
+	/* fonts */
+	--font-base: "poppins", sans-serif;
+	--font-heading: "lilitaone", sans-serif;
+
+	/* Sizes (golden ratio) */
+	--xs: 6px;
+	--sm: 10px;
+	--md: calc(var(--xs) + var(--sm)); /* desktop base font size: 16px */
+	--lg: calc(var(--sm) + var(--md)); /* 24px */
+	--xl: calc(var(--md) + var(--lg)); /* 42px */
+	--2xl: calc(var(--lg) + var(--xl)); /* 68px */
+	--3xl: calc(var(--xl) + var(--2xl)); /* 110px */
+	--4xl: calc(var(--2xl) + var(--3xl)); /* 178px */
+	--5xl: calc(var(--3xl) + var(--4xl)); /* 288px */
+	--6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
+}
+body {
+	font-family: var(--font-base);
+	font-weight: 500;
+	background: linear-gradient(var(--color-bg-gradient-1), var(--color-bg-gradient-2));
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-heading);
+	font-weight: 400;
+}
+
+strong,
+.bold {
+	font-weight: 700;
+}
