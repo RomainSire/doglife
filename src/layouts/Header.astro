@@ -1,5 +1,16 @@
-<header>
-	<a href="/"> logo </a>
+---
+import logo from "@images/logo.png";
+import { Image } from "astro:assets";
+---
+
+<header class="container">
+	<a href="/" class="logo">
+		<Image src={logo} alt="Logo de DogLife: un chien blanc qui fait un clin d'oeil" />
+		<p>
+			Éducateur canin<br />
+			Alexis Uribe
+		</p>
+	</a>
 	<nav>
 		<ul>
 			<li><a href="nous">Nous connaitre</a></li>
@@ -8,3 +19,54 @@
 		</ul>
 	</nav>
 </header>
+
+<style>
+	header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		row-gap: var(--sm);
+		column-gap: var(--lg);
+		flex-wrap: wrap;
+		padding-block: var(--md);
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		row-gap: var(--sm);
+		column-gap: var(--lg);
+		margin-right: auto;
+	}
+	@media screen and (max-width: 780px) {
+		.logo {
+			flex-grow: 2;
+			justify-content: center;
+		}
+	}
+	.logo img {
+		width: var(--4xl);
+		height: var(--4xl);
+	}
+	.logo p {
+		font-size: var(--lg);
+		font-weight: 700;
+		line-height: 1.2;
+	}
+
+	nav ul {
+		display: flex;
+		align-items: center;
+		gap: var(--md);
+		font-weight: 700;
+	}
+	nav a {
+		display: block;
+		padding: var(--sm) var(--md);
+		transition: transform 0.2s;
+	}
+	nav a:hover {
+		transform: translateY(-0.2em);
+	}
+</style>
