@@ -45,7 +45,9 @@ const baseUrl = "https://doglife.ovh";
 			<Header />
 			{showHero ? <Hero /> : null}
 		</div>
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
