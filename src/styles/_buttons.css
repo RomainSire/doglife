@@ -1,0 +1,36 @@
+@property --bg1 {
+	syntax: "<color>";
+	initial-value: hsl(5, 78%, 75%);
+	inherits: false;
+}
+
+@property --bg2 {
+	syntax: "<color>";
+	initial-value: hsl(5, 48%, 52%);
+	inherits: false;
+}
+
+.button {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--sm);
+	background-image: radial-gradient(farthest-corner at 75% 25%, var(--bg1), var(--bg2));
+	color: var(--color-neutral);
+	padding: var(--md) var(--xl);
+	font-weight: 700;
+	border: none;
+	border-radius: var(--sm);
+	cursor: pointer;
+	line-height: 1;
+	transition:
+		--bg1 0.5s,
+		--bg2 0.5s,
+		box-shadow 0.5s;
+}
+
+.button:hover {
+	--bg1: hsl(5, 48%, 52%);
+	--bg2: hsl(5, 78%, 75%);
+	color: var(--color-neutral);
+	box-shadow: 0 0 var(--lg) hsl(205, 100%, 79%);
+}
