@@ -1,8 +1,7 @@
 ---
 import Card from "@components/base/Card.astro";
 import SeeMoreLink from "@components/base/SeeMoreLink.astro";
-import carrousel1 from "@images/introCarrousel/carrousel1.jpg";
-import { Image } from "astro:assets";
+import IntroCarousel from "@components/landing/IntroCarousel.astro";
 ---
 
 <section class:list={["container", "intro"]}>
@@ -22,7 +21,7 @@ import { Image } from "astro:assets";
 		</p>
 		<SeeMoreLink href="/nous">En savoir plus</SeeMoreLink>
 	</Card>
-	<Image class="image" src={carrousel1} alt="Alexis assis entre ses deux chiens Amé et Fiona" />
+	<IntroCarousel />
 </section>
 
 <style>

@@ -1,0 +1,263 @@
+---
+import carrousel1 from "@images/introCarrousel/carrousel1.jpg";
+import carrousel2 from "@images/introCarrousel/carrousel2.jpg";
+import carrousel3 from "@images/introCarrousel/carrousel3.jpg";
+import carrousel4 from "@images/introCarrousel/carrousel4.jpg";
+import carrousel5 from "@images/introCarrousel/carrousel5.jpg";
+import { Image } from "astro:assets";
+
+const images: {
+	src: ImageMetadata;
+	alt: string;
+}[] = [
+	{
+		src: carrousel1,
+		alt: "Alexis assis entre ses deux chiens Amé et Fiona",
+	},
+	{
+		src: carrousel2,
+		alt: "Un chien accompagné de la Dream Team de Dog Life: Fiona et Amé",
+	},
+	{
+		src: carrousel3,
+		alt: "Alexis en compagnie de 4 chiens",
+	},
+	{
+		src: carrousel4,
+		alt: "Alexis en compagnie de 2 bergers allemands",
+	},
+	{
+		src: carrousel5,
+		alt: "Deux chihuahuas en train de jouer",
+	},
+];
+---
+
+<div class="carousel">
+	<div class="carousel-inner">
+		{
+			images.map((image, index) => (
+				<div class:list={["carousel-item", index === 0 ? "active" : ""]}>
+					<Image src={image.src} alt={image.alt} />
+				</div>
+			))
+		}
+	</div>
+	<button class="carousel-control prev" id="prevBtn">
+		<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+			<path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"
+			></path>
+		</svg>
+	</button>
+	<button class="carousel-control next" id="nextBtn">
+		<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 256 256">
+			<path
+				d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"
+			></path>
+		</svg>
+	</button>
+	<div class="pagination" id="pagination">
+		{images.map((_, index) => <span class:list={["dot", index === 0 ? "active" : ""]} />)}
+	</div>
+</div>
+
+<style>
+	.carousel {
+		position: relative;
+		width: 100%;
+		margin: auto;
+		overflow: hidden;
+	}
+
+	.carousel-inner {
+		display: flex;
+		transition: transform 0.5s ease;
+	}
+
+	.carousel-item {
+		min-width: 100%;
+		box-sizing: border-box;
+	}
+
+	.carousel-item img {
+		width: 100%;
+		border-radius: var(--md);
+	}
+
+	.carousel-control {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: var(--2xl);
+		height: var(--2xl);
+		border-radius: 50%;
+		border: none;
+		cursor: pointer;
+		background-color: rgba(0, 0, 0, 0.5);
+		color: var(--color-neutral);
+	}
+
+	.carousel-control.prev {
+		left: var(--sm);
+	}
+
+	.carousel-control.next {
+		right: var(--sm);
+	}
+
+	.pagination {
+		position: absolute;
+		bottom: var(--sm);
+		left: 0;
+		right: 0;
+		display: flex;
+		justify-content: center;
+		gap: var(--sm);
+	}
+
+	.dot {
+		height: var(--sm);
+		width: var(--sm);
+		background-color: var(--color-neutral);
+		border-radius: 5px;
+		cursor: pointer;
+		display: block;
+		z-index: 10;
+		transition: width 0.5s ease;
+	}
+
+	.dot.active {
+		width: calc(var(--sm) * 2.5);
+	}
+
+	@media screen and (max-width: 550px) {
+		.carousel-control {
+			width: var(--xl);
+			height: var(--xl);
+		}
+	}
+</style>
+
+<script>
+	let currentIndex = 0;
+	let autoSlideInterval: number;
+
+	/**
+	 * Affiche la slide à l'index donné
+	 * @param index - L'index de la slide à afficher
+	 */
+	function showSlide(index: number) {
+		const slides = document.querySelectorAll(".carousel-item");
+		if (slides.length === 0) return;
+
+		if (index >= slides.length) {
+			currentIndex = 0;
+		} else if (index < 0) {
+			currentIndex = slides.length - 1;
+		} else {
+			currentIndex = index;
+		}
+
+		const carouselInner = document.querySelector(".carousel-inner");
+		if (carouselInner) {
+			const offset = -currentIndex * 100;
+			(carouselInner as HTMLElement).style.transform = `translateX(${offset}%)`;
+		}
+
+		updatePagination();
+	}
+
+	/**
+	 * Affiche la slide suivante
+	 */
+	function nextSlide() {
+		showSlide(currentIndex + 1);
+		resetAutoSlide();
+	}
+
+	/**
+	 * Affiche la slide précédente
+	 */
+	function prevSlide() {
+		showSlide(currentIndex - 1);
+		resetAutoSlide();
+	}
+
+	/**
+	 * Démarre le défilement automatique des slides
+	 */
+	function startAutoSlide() {
+		autoSlideInterval = setInterval(() => {
+			showSlide(currentIndex + 1);
+		}, 5000);
+	}
+
+	/**
+	 * Réinitialise le défilement automatique des slides
+	 */
+	function resetAutoSlide() {
+		clearInterval(autoSlideInterval);
+		startAutoSlide();
+	}
+
+	/**
+	 * Initialise le bouton next
+	 */
+	function initNextBtn() {
+		const nextBtn = document.getElementById("nextBtn");
+		if (nextBtn) {
+			nextBtn.addEventListener("click", nextSlide);
+		}
+	}
+
+	/**
+	 * Initialise le bouton previous
+	 */
+	function initPrevBtn() {
+		const prevBtn = document.getElementById("prevBtn");
+		if (prevBtn) {
+			prevBtn.addEventListener("click", prevSlide);
+		}
+	}
+
+	/**
+	 * Initialise les boutons de pagination
+	 */
+	function initPagination() {
+		const dots = document.querySelectorAll(".pagination .dot");
+		dots.forEach((dot, index) => {
+			dot.addEventListener("click", () => {
+				showSlide(index);
+				resetAutoSlide();
+			});
+		});
+	}
+
+	/**
+	 * Met à jour la pagination en fonction de la slide actuelle
+	 */
+	function updatePagination() {
+		const dots = document.querySelectorAll(".pagination .dot");
+		dots.forEach((dot, index) => {
+			if (index === currentIndex) {
+				dot.classList.add("active");
+			} else {
+				dot.classList.remove("active");
+			}
+		});
+	}
+
+	/**
+	 * Affiche la première slide au chargement de la page et initialise les éléments du carousel
+	 */
+	document.addEventListener("DOMContentLoaded", () => {
+		showSlide(currentIndex);
+		startAutoSlide();
+		initNextBtn();
+		initPrevBtn();
+		initPagination();
+	});
+</script>
