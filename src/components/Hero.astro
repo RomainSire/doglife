@@ -1,0 +1,57 @@
+---
+import heroImage from "@images/hero.png";
+import { Image } from "astro:assets";
+---
+
+<section class="hero">
+	<div class:list={["container", "titles"]}>
+		<h1>L'éducation canine positive à Montpellier avec Dog Life</h1>
+		<p class="subtitle">
+			Dog Life vous accompagne et vous guide grâce à des méthodes d'éducation positives et modernes.
+		</p>
+		<p class="subtitle">Apprenez à comprendre les besoins de votre chien et à mieux vous faire comprendre de lui.</p>
+		<a href="/#contact" class:list={["button", "contact"]}>Contactez-moi !</a>
+	</div>
+	<Image src={heroImage} alt="Une photo de la tête d'un chien amical en gros plan" class="heroImage" />
+</section>
+
+<style>
+	.hero {
+		display: grid;
+		grid-template-rows: 1fr auto;
+	}
+	.titles {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	h1 {
+		margin-bottom: var(--lg);
+	}
+	.subtitle {
+		color: var(--color-base-secondary);
+		text-wrap: balance;
+	}
+	.contact {
+		display: block; /* faire porter ça sur la classe button */
+		margin-top: var(--lg);
+	}
+	.heroImage {
+		width: 100%;
+	}
+
+	@media screen and (max-width: 780px) {
+		h1 {
+			font-size: var(--lg);
+			margin-bottom: var(--md);
+		}
+		.subtitle {
+			line-height: 1.5;
+		}
+		.contact {
+			margin-top: var(--md);
+		}
+	}
+</style>

@@ -1,4 +1,5 @@
 ---
+import Hero from "@components/Hero.astro";
 import Footer from "@layouts/Footer.astro";
 import Header from "@layouts/Header.astro";
 import "@styles/global.css";
@@ -8,9 +9,10 @@ interface Props {
 		title: string;
 		description?: string;
 	};
+	showHero?: boolean;
 }
 
-const { meta } = Astro.props;
+const { meta, showHero } = Astro.props;
 const baseUrl = "https://doglife.ovh";
 ---
 
@@ -39,7 +41,10 @@ const baseUrl = "https://doglife.ovh";
 		<meta name="twitter:image:alt" content="" />
 	</head>
 	<body>
-		<Header />
+		<div class={showHero ? "fullscreen" : ""}>
+			<Header />
+			{showHero ? <Hero /> : null}
+		</div>
 		<slot />
 		<Footer />
 	</body>
@@ -51,5 +56,10 @@ const baseUrl = "https://doglife.ovh";
 		grid-template-rows: auto 1fr auto;
 		justify-items: stretch;
 		min-height: 100vh;
+	}
+	.fullscreen {
+		height: 100vh;
+		display: grid;
+		grid-template-rows: auto 1fr;
 	}
 </style>
