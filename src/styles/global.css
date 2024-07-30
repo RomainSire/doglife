@@ -26,6 +26,9 @@
 	--4xl: calc(var(--2xl) + var(--3xl)); /* 178px */
 	--5xl: calc(var(--3xl) + var(--4xl)); /* 288px */
 	--6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
+
+	/* Shadow */
+	--glass-shadow: 0 var(--lg) var(--xl) 0 hsla(0, 0%, 0%, 10%);
 }
 
 @media screen and (max-width: 900px) {
