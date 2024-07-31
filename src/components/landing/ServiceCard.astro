@@ -1,0 +1,42 @@
+---
+import Card from "@components/base/Card.astro";
+import SeeMoreLink from "@components/base/SeeMoreLink.astro";
+import Image from "astro/components/Image.astro";
+
+interface Props {
+	image: {
+		src: ImageMetadata;
+		alt: string;
+	};
+	title: string;
+	content: string;
+	seeMoreHref: string;
+}
+
+const { image, title, content, seeMoreHref } = Astro.props;
+---
+
+<Card class="card">
+	<Image src={image.src} alt={image.alt} class="image" />
+	<div class="content">
+		<h2>{title}</h2>
+		<p>{content}</p>
+		<SeeMoreLink href={seeMoreHref}>En savoir plus</SeeMoreLink>
+	</div>
+</Card>
+
+<style>
+	.card {
+		display: grid;
+		grid-template-rows: auto 1fr;
+	}
+	.content {
+		padding: var(--lg) var(--xl);
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		gap: var(--md);
+	}
+	.image {
+		width: 100%;
+	}
+</style>
