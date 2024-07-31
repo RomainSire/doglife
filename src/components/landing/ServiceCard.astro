@@ -1,5 +1,4 @@
 ---
-import Card from "@components/base/Card.astro";
 import SeeMoreLink from "@components/base/SeeMoreLink.astro";
 import Image from "astro/components/Image.astro";
 
@@ -16,17 +15,17 @@ interface Props {
 const { image, title, content, seeMoreHref } = Astro.props;
 ---
 
-<Card class="card">
+<article class="glass-card">
 	<Image src={image.src} alt={image.alt} class="image" loading="eager" />
 	<div class="content">
 		<h2>{title}</h2>
 		<p>{content}</p>
 		<SeeMoreLink href={seeMoreHref}>En savoir plus</SeeMoreLink>
 	</div>
-</Card>
+</article>
 
 <style>
-	.card {
+	.glass-card {
 		display: grid;
 		grid-template-rows: auto 1fr;
 	}

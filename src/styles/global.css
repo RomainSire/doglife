@@ -90,3 +90,21 @@ a {
 a:hover {
 	color: var(--color-accent);
 }
+
+.glass-card {
+	border-radius: var(--md);
+	position: relative;
+	background: linear-gradient(120deg, hsla(0, 0%, 100%, 80%), hsla(0, 0%, 100%, 50%));
+	box-shadow: var(--glass-shadow);
+	backdrop-filter: blur(20px);
+	overflow: hidden;
+}
+
+.glass-card::after {
+	content: "";
+	position: absolute;
+	inset: -1px;
+	z-index: -1;
+	border-radius: inherit;
+	background: linear-gradient(120deg, hsla(0, 0%, 100%, 100%), hsla(0, 0%, 100%, 70%));
+}

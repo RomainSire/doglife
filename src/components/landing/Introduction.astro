@@ -1,11 +1,10 @@
 ---
-import Card from "@components/base/Card.astro";
 import SeeMoreLink from "@components/base/SeeMoreLink.astro";
 import IntroCarousel from "@components/landing/IntroCarousel.astro";
 ---
 
 <section class:list={["container", "intro"]}>
-	<Card class="card">
+	<div class="glass-card">
 		<h2>Bienvenue chez Dog Life !</h2>
 		<p>
 			Vous avez fait le premier pas en décidant d'éduquer votre chien. Vous êtes sur le point de découvrir tout ce dont
@@ -20,7 +19,7 @@ import IntroCarousel from "@components/landing/IntroCarousel.astro";
 			bienveillance et professionnalisme.
 		</p>
 		<SeeMoreLink href="/nous">En savoir plus</SeeMoreLink>
-	</Card>
+	</div>
 	<IntroCarousel />
 </section>
 
@@ -32,7 +31,7 @@ import IntroCarousel from "@components/landing/IntroCarousel.astro";
 		gap: var(--lg);
 	}
 
-	.card {
+	.glass-card {
 		padding: var(--lg) var(--xl);
 		display: grid;
 		gap: var(--md);
