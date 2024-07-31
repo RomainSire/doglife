@@ -38,7 +38,7 @@ const images: {
 		{
 			images.map((image, index) => (
 				<div class:list={["carousel-item", index === 0 ? "active" : ""]}>
-					<Image src={image.src} alt={image.alt} />
+					<Image src={image.src} alt={image.alt} loading="eager" />
 				</div>
 			))
 		}

@@ -17,7 +17,7 @@ const { image, title, content, seeMoreHref } = Astro.props;
 ---
 
 <Card class="card">
-	<Image src={image.src} alt={image.alt} class="image" />
+	<Image src={image.src} alt={image.alt} class="image" loading="eager" />
 	<div class="content">
 		<h2>{title}</h2>
 		<p>{content}</p>
