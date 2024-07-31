@@ -16,6 +16,7 @@ const { class: className, ...rest } = Astro.props;
 		position: relative;
 		background: linear-gradient(120deg, hsla(0, 0%, 100%, 80%), hsla(0, 0%, 100%, 50%));
 		box-shadow: var(--glass-shadow);
+		backdrop-filter: blur(20px);
 	}
 	.card::after {
 		content: "";
