@@ -1,0 +1,76 @@
+---
+import type { TestimonialType } from "@data/testimonials";
+
+interface Props {
+  testimonial: TestimonialType;
+}
+
+const { testimonial } = Astro.props;
+const starArray = Array(testimonial.stars).fill("");
+---
+
+<article class:list={["glass-card", "wrapper"]}>
+  <header>
+    <div class="avatar" style={`background-color: ${testimonial.color};`}>
+      {testimonial.author.charAt(0)}
+    </div>
+    <div>
+      <h3>{testimonial.author}</h3>
+      <p class="subtitle">{testimonial.authorSubtitle}</p>
+    </div>
+  </header>
+  <div>
+    {
+      starArray.map(() => (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="#FBBF24"
+          viewBox="0 0 256 256"
+        >
+          <path d="M234.29,114.85l-45,38.83L203,211.75a16.4,16.4,0,0,1-24.5,17.82L128,198.49,77.47,229.57A16.4,16.4,0,0,1,53,211.75l13.76-58.07-45-38.83A16.46,16.46,0,0,1,31.08,86l59-4.76,22.76-55.08a16.36,16.36,0,0,1,30.27,0l22.75,55.08,59,4.76a16.46,16.46,0,0,1,9.37,28.86Z" />
+        </svg>
+      ))
+    }
+  </div>
+  <p>{testimonial.content}</p>
+  <p class="date">{testimonial.date}</p>
+</article>
+
+<style>
+  .wrapper {
+    padding: var(--lg) var(--xl);
+    font-size: 14px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: var(--sm);
+    width: 650px;
+    max-width: 90vw;
+    box-shadow: var(--small-shadow);
+  }
+  header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--md);
+    align-items: center;
+  }
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    color: var(--color-neutral);
+    display: grid;
+    place-items: center;
+    font-size: var(--lg);
+  }
+  h3 {
+    font-family: var(--font-base);
+    font-weight: 700;
+  }
+  .subtitle,
+  .date {
+    color: var(--color-base-secondary);
+  }
+</style>

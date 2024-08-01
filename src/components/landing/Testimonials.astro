@@ -1,0 +1,108 @@
+---
+import TestimonialCard from "./TestimonialCard.astro";
+
+import { testimonialsData } from "@data/testimonials";
+/**
+ * divide the testimonialsData array into two halves to display them on 2 lines
+ */
+const half = Math.ceil(testimonialsData.length / 2);
+const firstHalf = testimonialsData.slice(0, half);
+const secondHalf = testimonialsData.slice(half, testimonialsData.length);
+---
+
+<section>
+  <h2 class="container">Témoignages</h2>
+  <div class="marquee">
+    <div class="marquee-content">
+      <div class="marquee-items">
+        {
+          firstHalf.map((testimonial) => (
+            <TestimonialCard testimonial={testimonial} />
+          ))
+        }
+      </div>
+      <!-- Duplicate the items to have a full loop -->
+      <div class="marquee-items">
+        {
+          firstHalf.map((testimonial) => (
+            <TestimonialCard testimonial={testimonial} />
+          ))
+        }
+      </div>
+    </div>
+    <div class="marquee-content">
+      <div class="marquee-items reverse">
+        {
+          secondHalf.map((testimonial) => (
+            <TestimonialCard testimonial={testimonial} />
+          ))
+        }
+      </div>
+      <!-- Duplicate the items to have a full loop -->
+      <div class="marquee-items reverse">
+        {
+          secondHalf.map((testimonial) => (
+            <TestimonialCard testimonial={testimonial} />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .marquee {
+      overflow-x: hidden;
+      overflow-y: visible;
+      position: relative;
+      width: 90vw;
+      margin-inline: auto;
+      -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        #000 4%,
+        #000 96%,
+        transparent
+      );
+      mask-image: linear-gradient(
+        90deg,
+        transparent 0%,
+        #000 4%,
+        #000 96%,
+        transparent
+      );
+      display: grid;
+      gap: var(--lg);
+      padding-block: var(--lg);
+    }
+    .marquee-content {
+      display: flex;
+      gap: var(--lg);
+      overflow-y: visible;
+    }
+    .marquee-items {
+      display: flex;
+      gap: var(--lg);
+      animation-name: marquee;
+      animation-duration: 60s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-fill-mode: both;
+    }
+    .marquee-items.reverse {
+      animation-duration: 70s;
+      animation-direction: reverse;
+    }
+    .marquee:hover .marquee-items {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-100% - var(--lg)));
+      }
+    }
+  </style>
+</section>
