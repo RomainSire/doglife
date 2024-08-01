@@ -28,7 +28,8 @@
 	--6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
 
 	/* Shadow */
-	--glass-shadow: 0 var(--lg) var(--xl) 0 hsla(0, 0%, 0%, 10%);
+	--big-shadow: 0 var(--lg) var(--xl) 0 hsla(0, 0%, 0%, 10%);
+	--small-shadow: 0 var(--xs) var(--sm) 0 hsla(0, 0%, 0%, 10%);
 }
 
 @media screen and (max-width: 900px) {
@@ -95,11 +96,10 @@ a:hover {
 	border-radius: var(--md);
 	position: relative;
 	background: linear-gradient(120deg, hsla(0, 0%, 100%, 80%), hsla(0, 0%, 100%, 50%));
-	box-shadow: var(--glass-shadow);
+	box-shadow: var(--small-shadow);
 	backdrop-filter: blur(20px);
 	overflow: hidden;
 }
-
 .glass-card::after {
 	content: "";
 	position: absolute;
