@@ -1,0 +1,131 @@
+---
+import Loader from "@components/base/Loader.astro";
+
+const baseId = import.meta.env.AIRTABLE_BASEID;
+const tableId = import.meta.env.AIRTABLE_PRICE_TABLEID;
+const token = import.meta.env.AIRTABLE_TOKEN;
+---
+
+<section class="container">
+	<div class="glass-card">
+		<h2>Tarifs</h2>
+		<div class="loader" id="loader">
+			<Loader />
+		</div>
+		<table>
+			<tbody id="target">
+				<!-- Table created dynamically -->
+			</tbody>
+		</table>
+	</div>
+</section>
+
+<style>
+	h2 {
+		padding: var(--lg) var(--xl);
+	}
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+</style>
+
+<style is:global>
+	.pricing-tr {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		padding: var(--md) var(--xl);
+	}
+	.pricing-tr:nth-child(2n + 1) {
+		background-color: var(--color-bg-gradient-2);
+	}
+	.pricing-td {
+		min-height: 2lh;
+	}
+	.pricing-title {
+		font-weight: 700;
+	}
+	.pricing-hint {
+		font-size: 0.95em;
+		font-weight: 500;
+		color: var(--color-base-secondary);
+	}
+	.pricing-error {
+		grid-template-columns: 1fr;
+	}
+	.loader {
+		text-align: center;
+		margin: var(--xl);
+	}
+	@media screen and (max-width: 750px) {
+		.pricing-tr {
+			grid-template-columns: 1fr;
+		}
+		.pricing-td {
+			min-height: auto;
+		}
+	}
+</style>
+
+<script define:vars={{ baseId, tableId, token }} is:inline>
+	fetch(`https://api.airtable.com/v0/${baseId}/${tableId}`, {
+		method: "GET",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+	})
+		.then((response) => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error("Impossible de récupérer les tarifs");
+			}
+		})
+		.then((rawResponse) => {
+			const records = Object.values(rawResponse.records).map((record) => {
+				return record.fields;
+			});
+			const target = document.getElementById("target");
+			const loader = document.getElementById("loader");
+			loader.remove();
+			records.forEach((record) => {
+				const tr = document.createElement("tr");
+				tr.classList.add("pricing-tr");
+				const td1 = document.createElement("td");
+				td1.classList.add("pricing-td");
+				const td2 = document.createElement("td");
+				td2.classList.add("pricing-td");
+				const title = document.createElement("div");
+				title.classList.add("pricing-title");
+				title.textContent = record.Titre;
+				td1.appendChild(title);
+				if (record.SousTitre) {
+					const hint = document.createElement("div");
+					hint.classList.add("pricing-hint");
+					hint.textContent = record.SousTitre;
+					td1.appendChild(hint);
+				}
+				td2.innerHTML = record.Tarif.replaceAll("\n", "<br />");
+				tr.appendChild(td1);
+				tr.appendChild(td2);
+				target.appendChild(tr);
+			});
+		})
+		.catch((error) => {
+			// displays an error message in the table if the fetch fails
+			const target = document.getElementById("target");
+			const loader = document.getElementById("loader");
+			loader.remove();
+			const tr = document.createElement("tr");
+			tr.classList.add("pricing-tr");
+			tr.classList.add("pricing-error");
+			const td = document.createElement("td");
+			td.classList.add("pricing-td");
+			td.textContent =
+				"⚠️ Nous n'avons pas pu récupérer les tarifs pour le moment. Merci de réessayer plus tard ou de nous contacter directement.";
+			tr.appendChild(td);
+			target.appendChild(tr);
+		});
+</script>
