@@ -13,9 +13,11 @@
 .button {
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 	gap: var(--sm);
 	background-image: radial-gradient(farthest-corner at 75% 25%, var(--bg1), var(--bg2));
 	color: var(--color-neutral);
+	letter-spacing: 0.04em;
 	padding: var(--md) var(--xl);
 	font-weight: 700;
 	border: none;
@@ -32,5 +34,17 @@
 	--bg1: hsl(5, 48%, 52%);
 	--bg2: hsl(5, 78%, 75%);
 	color: var(--color-neutral);
-	box-shadow: 0 0 var(--lg) hsl(205, 100%, 79%);
+}
+
+.button.secondary {
+	--bg1: hsl(0, 0%, 100%);
+	--bg2: hsl(207, 100%, 94%);
+	color: var(--color-base);
+	font-weight: 500;
+	border: 1px solid var(--color-base-secondary);
+}
+
+.button.secondary:hover {
+	--bg1: hsl(207, 100%, 94%);
+	--bg2: hsl(0, 0%, 100%);
 }
