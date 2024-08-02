@@ -1,0 +1,16 @@
+---
+import MapReact from "@components/landing/MapReact.tsx";
+---
+
+<section class="container">
+	<div class="glass-card">
+		<h2>Localisation</h2>
+		<MapReact client:only="react" />
+	</div>
+</section>
+
+<style>
+	h2 {
+		padding: var(--lg) var(--xl);
+	}
+</style>

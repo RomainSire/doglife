@@ -1,30 +1,32 @@
 ---
 import Introduction from "@components/landing/Introduction.astro";
+import Map from "@components/landing/Map.astro";
 import Prices from "@components/landing/Prices.astro";
 import Services from "@components/landing/Services.astro";
 import Testimonials from "@components/landing/Testimonials.astro";
 import Layout from "@layouts/Layout.astro";
 
 const meta = {
-	title: "Dog Life: Éducateur canin à Montpellier",
-	description:
-		"L'éducation canine positive à Montpellier avec Dog Life : Dog Life vous accompagne et vous guide grâce à des méthodes d'éducation positives et modernes. Apprenez à comprendre les besoins de votre chien et à mieux vous faire comprendre de lui.",
+  title: "Dog Life: Éducateur canin à Montpellier",
+  description:
+    "L'éducation canine positive à Montpellier avec Dog Life : Dog Life vous accompagne et vous guide grâce à des méthodes d'éducation positives et modernes. Apprenez à comprendre les besoins de votre chien et à mieux vous faire comprendre de lui.",
 };
 ---
 
 <Layout meta={meta} showHero={true}>
-	<main>
-		<Introduction />
-		<Services />
-		<Testimonials />
-		<Prices />
-	</main>
+  <main>
+    <Introduction />
+    <Services />
+    <Testimonials />
+    <Prices />
+    <Map />
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin-block: var(--4xl);
-		display: grid;
-		gap: var(--4xl);
-	}
+  main {
+    margin-block: var(--4xl);
+    display: grid;
+    gap: var(--4xl);
+  }
 </style>
