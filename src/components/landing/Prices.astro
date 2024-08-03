@@ -113,7 +113,7 @@ const token = import.meta.env.AIRTABLE_TOKEN;
 				target.appendChild(tr);
 			});
 		})
-		.catch((error) => {
+		.catch(() => {
 			// displays an error message in the table if the fetch fails
 			const target = document.getElementById("target");
 			const loader = document.getElementById("loader");
