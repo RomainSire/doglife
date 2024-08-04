@@ -3,55 +3,59 @@
 @import url("_buttons.css");
 
 :root {
-	/* Colors */
-	--color-base: hsl(206, 66%, 17%);
-	--color-base-secondary: hsl(206, 13%, 50%);
-	--color-neutral: hsl(206, 100%, 98%);
-	--color-accent: hsl(5, 48%, 52%);
-	--color-bg-gradient-1: hsl(4, 100%, 97%);
-	--color-bg-gradient-2: hsl(207, 100%, 95%);
+  /* Colors */
+  --color-base: hsl(206, 66%, 17%);
+  --color-base-secondary: hsl(206, 13%, 50%);
+  --color-neutral: hsl(206, 100%, 98%);
+  --color-accent: hsl(5, 48%, 52%);
+  --color-bg-gradient-1: hsl(4, 100%, 97%);
+  --color-bg-gradient-2: hsl(207, 100%, 95%);
 
-	/* fonts */
-	--font-base: "poppins", sans-serif;
-	--font-heading: "lilitaone", sans-serif;
+  /* fonts */
+  --font-base: "poppins", sans-serif;
+  --font-heading: "lilitaone", sans-serif;
 
-	/* Sizes (golden ratio) */
-	--xs: 6px;
-	--sm: 10px;
-	--md: calc(var(--xs) + var(--sm)); /* desktop base font size: 16px */
-	--lg: calc(var(--sm) + var(--md)); /* 24px */
-	--xl: calc(var(--md) + var(--lg)); /* 42px */
-	--2xl: calc(var(--lg) + var(--xl)); /* 68px */
-	--3xl: calc(var(--xl) + var(--2xl)); /* 110px */
-	--4xl: calc(var(--2xl) + var(--3xl)); /* 178px */
-	--5xl: calc(var(--3xl) + var(--4xl)); /* 288px */
-	--6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
+  /* Sizes (golden ratio) */
+  --xs: 6px;
+  --sm: 10px;
+  --md: calc(var(--xs) + var(--sm)); /* desktop base font size: 16px */
+  --lg: calc(var(--sm) + var(--md)); /* 24px */
+  --xl: calc(var(--md) + var(--lg)); /* 42px */
+  --2xl: calc(var(--lg) + var(--xl)); /* 68px */
+  --3xl: calc(var(--xl) + var(--2xl)); /* 110px */
+  --4xl: calc(var(--2xl) + var(--3xl)); /* 178px */
+  --5xl: calc(var(--3xl) + var(--4xl)); /* 288px */
+  --6xl: calc(var(--4xl) + var(--5xl)); /* 466px */
 
-	/* Shadow */
-	--big-shadow: 0 var(--lg) var(--xl) 0 hsla(0, 0%, 0%, 10%);
-	--small-shadow: 0 var(--xs) var(--sm) 0 hsla(0, 0%, 0%, 10%);
+  /* Shadow */
+  --big-shadow: 0 var(--lg) var(--xl) 0 hsla(0, 0%, 0%, 10%);
+  --small-shadow: 0 var(--xs) var(--sm) 0 hsla(0, 0%, 0%, 10%);
 }
 
 @media screen and (max-width: 900px) {
-	/* decrease font size for small screens: --md: 14px */
-	:root {
-		--xs: 5.35px;
-		--sm: 8.65px;
-	}
+  /* decrease font size for small screens: --md: 14px */
+  :root {
+    --xs: 5.35px;
+    --sm: 8.65px;
+  }
 }
 
 html {
-	scroll-behavior: smooth;
-	font-size: var(--md);
-	letter-spacing: 0.01em;
+  scroll-behavior: smooth;
+  font-size: var(--md);
+  letter-spacing: 0.01em;
+  background-color: var(--color-bg-gradient-2);
 }
 
 body {
-	font-family: var(--font-base);
-	font-weight: 500;
-	background: linear-gradient(var(--color-bg-gradient-1), var(--color-bg-gradient-2));
-	background-attachment: fixed;
-	color: var(--color-base);
+  font-family: var(--font-base);
+  font-weight: 500;
+  background: linear-gradient(
+    var(--color-bg-gradient-1),
+    var(--color-bg-gradient-2)
+  );
+  background-attachment: fixed;
+  color: var(--color-base);
 }
 
 h1,
@@ -60,51 +64,59 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--font-heading);
-	font-weight: 400;
-	letter-spacing: 0.02em;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 h1 {
-	font-size: var(--xl);
+  font-size: var(--xl);
 }
 h2 {
-	color: var(--color-accent);
-	font-size: var(--lg);
+  color: var(--color-accent);
+  font-size: var(--lg);
 }
 
 strong,
 .bold {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .container {
-	width: 100%;
-	max-width: 90rem;
-	margin-inline: auto;
-	padding-inline: var(--md);
+  width: 100%;
+  max-width: 90rem;
+  margin-inline: auto;
+  padding-inline: var(--md);
 }
 
 a {
-	transition: color 0.2s;
+  transition: color 0.2s;
 }
 a:hover {
-	color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .glass-card {
-	border-radius: var(--md);
-	position: relative;
-	background: linear-gradient(120deg, hsla(0, 0%, 100%, 80%), hsla(0, 0%, 100%, 50%));
-	box-shadow: var(--small-shadow);
-	backdrop-filter: blur(20px);
-	overflow: hidden;
+  border-radius: var(--md);
+  position: relative;
+  background: linear-gradient(
+    120deg,
+    hsla(0, 0%, 100%, 80%),
+    hsla(0, 0%, 100%, 50%)
+  );
+  box-shadow: var(--small-shadow);
+  backdrop-filter: blur(20px);
+  overflow: hidden;
 }
 .glass-card::after {
-	content: "";
-	position: absolute;
-	inset: -1px;
-	z-index: -1;
-	border-radius: inherit;
-	background: linear-gradient(120deg, hsla(0, 0%, 100%, 100%), hsla(0, 0%, 100%, 70%));
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    hsla(0, 0%, 100%, 100%),
+    hsla(0, 0%, 100%, 70%)
+  );
 }
