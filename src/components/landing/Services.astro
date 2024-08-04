@@ -5,45 +5,51 @@ import service3 from "@images/services/service3.jpg";
 import ServiceCard from "./ServiceCard.astro";
 ---
 
-<section class:list={["container", "services"]}>
-	<ServiceCard
-		image={{
-			src: service1,
-			alt: "Un chiot bouledogue français qui nous regarde",
-		}}
-		title="Chiots"
-		content="Apprenez à votre chiot les bases de l'éducation et de la sociabilisation pour un chien heureux et bien équilibré dès le plus jeune âge."
-		seeMoreHref="/services#chiots"
-	/>
-	<ServiceCard
-		image={{
-			src: service2,
-			alt: "Alexis qui marche dans la rue avec un berger allemand qui le regarde",
-		}}
-		title="Éducation"
-		content="Des solutions personnalisées pour appredre à communiquer avec votre chien et à résoudre tous les problèmes d'obéissance."
-		seeMoreHref="/services#education"
-	/>
-	<ServiceCard
-		image={{
-			src: service3,
-			alt: "Trois chiens qui se promènent dans la rue",
-		}}
-		title="Promenades"
-		content="Offrez à votre chien une activité physique et sociale régulière pour son bien-être et votre tranquillité d'esprit."
-		seeMoreHref="/services#promenades"
-	/>
+<section class="container">
+  <h2>Services</h2>
+  <div class="services">
+    <ServiceCard
+      image={{
+        src: service1,
+        alt: "Un chiot bouledogue français qui nous regarde",
+      }}
+      title="Chiots"
+      content="Établissez les bases d'une éducation réussie et d'une bonne socialisation pour devenir un chien heureux et bien équilibré dès le plus jeune âge."
+      seeMoreHref="/services#chiots"
+    />
+    <ServiceCard
+      image={{
+        src: service2,
+        alt: "Alexis qui marche dans la rue avec un berger allemand qui le regarde",
+      }}
+      title="Éducation"
+      content="Des solutions personnalisées pour appredre à communiquer avec votre chien et à résoudre tous les problèmes d'obéissance."
+      seeMoreHref="/services#education"
+    />
+    <ServiceCard
+      image={{
+        src: service3,
+        alt: "Trois chiens qui se promènent dans la rue",
+      }}
+      title="Promenades"
+      content="Offrez à votre chien une activité physique et sociale régulière pour son bien-être et votre tranquillité d'esprit."
+      seeMoreHref="/services#promenades"
+    />
+  </div>
 </section>
 
 <style>
-	.services {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: var(--lg);
-	}
-	@media screen and (max-width: 750px) {
-		.services {
-			grid-template-columns: 1fr;
-		}
-	}
+  h2 {
+    margin-bottom: var(--lg);
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--lg);
+  }
+  @media screen and (max-width: 750px) {
+    .services {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

@@ -5,11 +5,11 @@ import Header from "@layouts/Header.astro";
 import "@styles/global.css";
 
 interface Props {
-	meta: {
-		title: string;
-		description?: string;
-	};
-	showHero?: boolean;
+  meta: {
+    title: string;
+    description?: string;
+  };
+  showHero?: boolean;
 }
 
 const { meta, showHero } = Astro.props;
@@ -18,61 +18,63 @@ const baseUrl = "https://doglife.ovh";
 
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
 
-		<!-- Title & description -->
-		<title>{meta.title}</title>
-		<meta name="description" content={meta.description} />
+    <!-- Title & description -->
+    <title>{meta.title}</title>
+    <meta name="description" content={meta.description} />
 
-		<!--  Essential META Tags -->
-		<meta property="og:title" content={meta.title} />
-		<meta property="og:type" content="website" />
-		<meta property="og:image" content="" />
-		<meta property="og:url" content={baseUrl} />
-		<meta name="twitter:card" content="summary_large_image" />
+    <!--  Essential META Tags -->
+    <meta property="og:title" content={meta.title} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content={baseUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
 
-		<!--  Non-Essential, But Recommended -->
-		<meta property="og:description" content={meta.description} />
-		<meta property="og:site_name" content={meta.title} />
-		<meta name="twitter:image:alt" content="" />
+    <!--  Non-Essential, But Recommended -->
+    <meta property="og:description" content={meta.description} />
+    <meta property="og:site_name" content={meta.title} />
+    <meta name="twitter:image:alt" content="" />
 
-		<!-- Leaflet -->
-		<link
-			rel="stylesheet"
-			href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-			crossorigin=""
-		/>
-		<script
-			src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-			crossorigin=""
-			is:inline></script>
-	</head>
-	<body>
-		<div class={showHero ? "fullscreen" : ""}>
-			<Header />
-			{showHero ? <Hero /> : null}
-		</div>
-		<slot />
-		<Footer />
-	</body>
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+      is:inline></script>
+  </head>
+  <body>
+    <div class={showHero ? "fullscreen" : ""}>
+      <Header />
+      {showHero ? <Hero /> : null}
+    </div>
+    <slot />
+    <Footer />
+  </body>
 </html>
 
 <style>
-	body {
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		justify-items: stretch;
-		min-height: 100vh;
-	}
-	.fullscreen {
-		height: 100vh;
-		display: grid;
-		grid-template-rows: auto 1fr;
-	}
+  body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    justify-items: stretch;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  .fullscreen {
+    height: 100vh;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
 </style>

@@ -4,14 +4,14 @@
 *,
 *::before,
 *::after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /* Prevent font size inflation */
 html {
-	-moz-text-size-adjust: none;
-	-webkit-text-size-adjust: none;
-	text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
 }
 
 /* Remove default margin in favour of better control in authored CSS */
@@ -28,20 +28,21 @@ blockquote,
 dl,
 dd,
 ul {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul,
 ol {
-	list-style: none;
+  list-style: none;
 }
 
 /* Set core body defaults */
 body {
-	min-height: 100vh;
-	line-height: 1.7;
+  min-height: 100vh;
+  min-height: 100dvh;
+  line-height: 1.7;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -54,7 +55,7 @@ h6,
 button,
 input,
 label {
-	line-height: 1.1;
+  line-height: 1.1;
 }
 
 /* Balance text wrapping on headings */
@@ -64,16 +65,16 @@ h3,
 h4,
 h5,
 h6 {
-	text-wrap: balance;
+  text-wrap: balance;
 }
 
 /* Make images easier to work with */
 img,
 picture {
-	max-width: 100%;
-	height: auto;
-	display: block;
-	font-style: italic;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  font-style: italic;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -81,22 +82,22 @@ input,
 button,
 textarea,
 select {
-	font-family: inherit;
-	font-size: inherit;
+  font-family: inherit;
+  font-size: inherit;
 }
 
 /* Make sure textareas without a rows attribute are not tiny */
 textarea:not([rows]) {
-	min-height: 10em;
+  min-height: 10em;
 }
 
 /* Anything that has been anchored to should have extra scroll margin */
 :target {
-	scroll-margin-block: 5ex;
+  scroll-margin-block: 5ex;
 }
 
 /* Remove default link style */
 a {
-	text-decoration: none;
-	color: currentColor;
+  text-decoration: none;
+  color: currentColor;
 }
